@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       habits.push(newHabit);
       storeHabits(habits);
       renderHabits(habits);
+      newHabitInput.value = "";
     }
   })
 
