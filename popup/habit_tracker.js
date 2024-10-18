@@ -1,30 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const habitList = document.getElementById('habit-list');
+  const habitForm = document.getElementById('habit-form');
+  const newHabitInput = document.getElementById('new-habit');
+  const addHabitText = document.getElementById('add-habit-text');
   
-  // eventually get from storage
-  // let habits = [
-  //   "Get Exercise",
-  //   "Drink 8oz Water",
-  //   "Practice LeetCode",
-  //   "Update Calender",
-  // ]
+  const today = new Date().toLocaleString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('date').textContent = today;
 
   function getStoredHabits() {
     const storedHabits = localStorage.getItem('habits');
     return storedHabits ? JSON.parse(storedHabits) : [];
   }
-  
-  const today = new Date().toLocaleDateString();
-  document.getElementById('date').textContent = today;
-  
-  const habitList = document.getElementById('habit-list');
-  const habitForm = document.getElementById('habit-form');
-  const newHabitInput = document.getElementById('new-habit');
 
-  
   const habits = getStoredHabits();
 
   function renderHabits(habits) {
     habitList.innerHTML = '';
+   
+    if(habits == '') {
+      addHabitText.innerHTML = 'No Habits, Create One Now!';
+    }
 
     habits.forEach((habit, index)=> {
       const li = document.createElement('li');
@@ -60,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
  
   habitForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const newHabit = newHabitInput.value.trim();
     if(newHabit) {
