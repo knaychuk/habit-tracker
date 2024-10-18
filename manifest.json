@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Habit Tracker",
+  "version": "1.0",
+
+  "description": "Quickly setup and track daily habits to ensure you keep consistent",
+  "icons": {
+    "48": "icons/habit-48.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/habit-48.png",
+    "default_title": "Habit Tracker",
+    "default_popup": "popup/habit_tracker.html"
+  }
+}
