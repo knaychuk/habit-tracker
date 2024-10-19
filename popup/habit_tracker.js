@@ -53,6 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
       checkbox.addEventListener('change', (e) => {
         habits[index].checked = checkbox.checked;
         storeHabits(habits);
+        checkComplete();
+
       })
 
       li.appendChild(checkbox);
@@ -73,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     habits.splice(index, 1);
     storeHabits(habits);
     renderHabits(habits);
+    checkComplete();
   }
 
   habitForm.addEventListener('submit', (e) => {
@@ -83,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       habits.push({ text: newHabit, checked: false });
       storeHabits(habits);
       renderHabits(habits);
+      checkComplete();
       newHabitInput.value = "";
     }
   })
