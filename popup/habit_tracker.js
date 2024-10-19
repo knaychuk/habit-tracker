@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const habitForm = document.getElementById('habit-form');
   const newHabitInput = document.getElementById('new-habit');
   const addHabitText = document.getElementById('add-habit-text');
+  const success = document.getElementById('success-text');
   
   const today = new Date().toLocaleString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   document.getElementById('date').textContent = today;
@@ -13,6 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const habits = getStoredHabits();
+
+  function checkComplete() {
+    const allCompleted = habits.every(habit => habit.checked);
+
+    if(allCompleted) {
+      success.innerHTML = 'success';
+    } else {
+    success.innerHTML = '';
+    }
+  
+  }
 
   function renderHabits(habits) {
     habitList.innerHTML = '';
@@ -25,14 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const li = document.createElement('li');
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
-      checkbox.id = habit;
+      checkbox.id = index;
+      checkbox.checked = habit.checked;
+
       const label = document.createElement('label');
-      label.htmlFor = habit;
-      label.textContent = habit;
+      label.htmlFor = checkbox.id;
+      label.textContent = habit.text;
+
       const button = document.createElement('button');
       button.textContent = 'Remove';
       button.addEventListener('click', () => {
         removeHabit(index);
+      })
+
+      checkbox.addEventListener('change', (e) => {
+        habits[index].checked = checkbox.checked;
+        storeHabits(habits);
       })
 
       li.appendChild(checkbox);
@@ -41,8 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
       habitList.appendChild(li);
     });
-  }
 
+    checkComplete();
+  }
 
   function storeHabits(habits) {
     localStorage.setItem('habits', JSON.stringify(habits));
@@ -53,19 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
     storeHabits(habits);
     renderHabits(habits);
   }
- 
+
   habitForm.addEventListener('submit', (e) => {
     // e.preventDefault();
 
     const newHabit = newHabitInput.value.trim();
     if(newHabit) {
-      habits.push(newHabit);
+      habits.push({ text: newHabit, checked: false });
       storeHabits(habits);
       renderHabits(habits);
       newHabitInput.value = "";
     }
   })
-
   
   renderHabits(habits);
 });
