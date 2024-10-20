@@ -4,11 +4,15 @@
     <title>My Extension</title>
     <link rel="stylesheet" href="./habit_tracker.css">
   </head>
-  <body>
-    <h1>Habits For <span id="date"></span></h1>
+  <body class="popup-container poppins-regular">
+    <div class="header-container">
+      <h1>Habits For Today:<span id=""></span></h1>
+    </div>
+      <h2 class="poppins-italic"><span id="date"></span></h2>
+  
     <form id="habit-form">
-      <input type="text" id="new-habit" placeholder="New Habit" required>
-      <button type="submit">Add Habit</button>
+      <input class="habit-input" type="text" id="new-habit" placeholder="e.g., Workout" required>
+      <button class="add-button" type="submit">Add Habit</button>
     </form>
     <div id="add-habit-text"></div>
     <div id="success-text"></div>

@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function checkComplete() {
     const allCompleted = habits.every(habit => habit.checked);
 
-    if(allCompleted) {
-      success.innerHTML = 'success';
+    if(allCompleted && habits != '') {
+      success.innerHTML = ':)';
     } else {
     success.innerHTML = '';
     }
@@ -31,20 +31,26 @@ document.addEventListener("DOMContentLoaded", () => {
    
     if(habits == '') {
       addHabitText.innerHTML = 'No Habits, Create One Now!';
+      success.innerHTML = 'test';
     }
 
     habits.forEach((habit, index)=> {
       const li = document.createElement('li');
+      li.classList.add('habit-item');
+
       const checkbox = document.createElement('input');
+      checkbox.classList.add('habit-checkbox');
       checkbox.type = 'checkbox';
       checkbox.id = index;
       checkbox.checked = habit.checked;
 
       const label = document.createElement('label');
+      label.classList.add('habit-label');
       label.htmlFor = checkbox.id;
       label.textContent = habit.text;
 
       const button = document.createElement('button');
+      button.classList.add('remove-button');
       button.textContent = 'Remove';
       button.addEventListener('click', () => {
         removeHabit(index);
@@ -56,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         checkComplete();
 
       })
-
+      
       li.appendChild(checkbox);
       li.appendChild(label);
       li.appendChild(button);
@@ -64,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
       habitList.appendChild(li);
     });
 
-    checkComplete();
+    // checkComplete();
   }
 
   function storeHabits(habits) {
