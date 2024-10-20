@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const button = document.createElement('button');
       button.classList.add('remove-button');
-      button.textContent = 'Remove';
+      button.textContent = 'X';
       button.addEventListener('click', () => {
         removeHabit(index);
       })
