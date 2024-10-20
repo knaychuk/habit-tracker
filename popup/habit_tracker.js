@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const newHabitInput = document.getElementById('new-habit');
   const addHabitText = document.getElementById('add-habit-text');
   const success = document.getElementById('success-text');
+  const calenderButton = document.getElementById('calendar-button');
   
   const today = new Date().toLocaleString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   document.getElementById('date').textContent = today;
@@ -108,6 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
       newHabitInput.value = "";
     }
   })
+
+  calenderButton.addEventListener('click', (e) => {
+    window.location.href = '../pages/calendar/calendar.html';
+  });
   
   renderHabits(habits);
 });

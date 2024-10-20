@@ -62,6 +62,7 @@ button {
 .popup-container {
   padding: 10px 20px;
   min-height: 500px;
+  min-width: 450px;
 }
 
 .header-container {
