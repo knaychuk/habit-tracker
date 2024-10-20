@@ -28,8 +28,8 @@ root:after {
 body {
   background: repeating-linear-gradient(
     45deg,
-    #feedf4,
-    #feedf4 10px,
+    #fceff4,
+    #fceff4 10px,
     #ffffff 10px,
     #ffffff 20px
   );
@@ -52,6 +52,12 @@ button {
   cursor: pointer;
 }
 
+#add-habit-text {
+  font-size: 2rem;
+  margin: 30px 0;
+}
+
+
 .popup-container {
   padding: 10px 20px;
   min-height: 500px;
@@ -63,6 +69,7 @@ button {
   justify-content: center;
   align-items: center;
 }
+
 
 .habit-input, .add-button{
   font-size: 1.5rem;
@@ -104,3 +111,35 @@ button {
   padding: 2px 6px;
   border: none;
 }
+
+#success-message {
+  display: none; 
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: lightgreen;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+  border: 5px dashed black;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+

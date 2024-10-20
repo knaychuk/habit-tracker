@@ -15,11 +15,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const habits = getStoredHabits();
 
+  function showSuccessMessage() {
+    const successMessage = document.getElementById('success-message');
+    successMessage.style.display = 'block';
+    
+    // Remove the message after the animation completes (3 seconds)
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 3000);
+  }
+
   function checkComplete() {
     const allCompleted = habits.every(habit => habit.checked);
 
     if(allCompleted && habits != '') {
-      success.innerHTML = ':)';
+      // showConfetti();
+      showSuccessMessage();
+      // success.innerHTML = ':)';
     } else {
     success.innerHTML = '';
     }
@@ -31,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
     if(habits == '') {
       addHabitText.innerHTML = 'No Habits, Create One Now!';
-      success.innerHTML = 'test';
+      success.innerHTML = '';
     }
 
     habits.forEach((habit, index)=> {
