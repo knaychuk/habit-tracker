@@ -22,6 +22,7 @@ root:after {
   padding: 0;
 
   --primary-color: #fb99aa;
+  --primary-color-dark: #ff778e;
   --remove-color: #ff5656;
 }
 
@@ -88,7 +89,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 10px 0;
+  margin: 10px;
 }
 
 .habit-checkbox {
@@ -111,6 +112,31 @@ button {
   padding: 2px 6px;
   border: none;
 }
+
+.calendar-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  position:absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.calendar-button:hover {
+  background-color: var(--primary-color);
+}
+
+.calendar-button:active {
+  background-color: var(--primary-color-dark);
+}
+
+.calendar-icon:hover{
+  fill: white;
+}
+
 
 #success-message {
   display: none; 
