@@ -57,10 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const allCompleted = habits.every(habit => habit.checked);
 
     if(allCompleted && habits != '') {
-      // showConfetti();
       completedDays[today] = true;
       storeCompletedDays(completedDays);
-      renderCompletedDays(completedDays);
       showSuccessMessage();
       // success.innerHTML = ':)';
     } else {
@@ -75,6 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
     habitList.innerHTML = '';
    
     if(habits == '') {
+      completedDays[today] = null;
+      storeCompletedDays(completedDays);
       addHabitText.innerHTML = 'No Habits, Create One Now!';
       success.innerHTML = '';
     }
@@ -153,6 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   renderHabits(habits);
-  renderCompletedDays(completedDays);
+  // renderCompletedDays(completedDays);
 });
 

@@ -1,0 +1,11 @@
+.complete-day {
+  color: green;
+}
+
+.incomplete-day {
+  color: red;
+}
+
+.null-day {
+  color: black;
+}
