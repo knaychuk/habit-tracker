@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const addHabitText = document.getElementById('add-habit-text');
   const success = document.getElementById('success-text');
   const calenderButton = document.getElementById('calendar-button');
+
+  // calendar
+  const completedList = document.getElementById('completed-list');
   
   const today = new Date().toLocaleString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   document.getElementById('date').textContent = today;
@@ -14,7 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return storedHabits ? JSON.parse(storedHabits) : [];
   }
 
+  function getStoredCompletedDays() {
+    const storedCompletedDays = localStorage.getItem('completedDays');
+    return storedCompletedDays ? JSON.parse(storedCompletedDays) : {};
+  }
+
   const habits = getStoredHabits();
+  const completedDays = getStoredCompletedDays(); 
 
   function showSuccessMessage() {
     const successMessage = document.getElementById('success-message');
@@ -26,15 +35,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   }
 
+  function renderCompletedDays(completedDays) {
+    // const completedList = '';
+
+    const div = document.getElementById('test-message');
+   
+
+    Object.entries(completedDays).forEach(([key, value]) => {
+      if(value == true) {
+        var content = document.createTextNode(key);
+      }
+      div.appendChild(content);
+    });
+
+    // div.appendChild(content);
+
+
+  }
+
   function checkComplete() {
     const allCompleted = habits.every(habit => habit.checked);
 
     if(allCompleted && habits != '') {
       // showConfetti();
+      completedDays[today] = true;
+      storeCompletedDays(completedDays);
+      renderCompletedDays(completedDays);
       showSuccessMessage();
       // success.innerHTML = ':)';
     } else {
-    success.innerHTML = '';
+      success.innerHTML = '';
+      completedDays[today] = false;
+      storeCompletedDays(completedDays);
     }
   
   }
@@ -86,6 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // checkComplete();
   }
 
+
+
   function storeHabits(habits) {
     localStorage.setItem('habits', JSON.stringify(habits));
   }
@@ -95,6 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
     storeHabits(habits);
     renderHabits(habits);
     checkComplete();
+  }
+
+  function storeCompletedDays(completedDays) {
+    localStorage.setItem('completedDays', JSON.stringify(completedDays));
   }
 
   habitForm.addEventListener('submit', (e) => {
@@ -115,5 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   renderHabits(habits);
+  renderCompletedDays(completedDays);
 });
 

@@ -114,7 +114,7 @@ button {
   border: none;
 }
 
-.calendar-button {
+.nav-button {
   background: none;
   border: none;
   cursor: pointer;
@@ -126,15 +126,15 @@ button {
   left: 10px;
 }
 
-.calendar-button:hover {
+.nav-button:hover {
   background-color: var(--primary-color);
 }
 
-.calendar-button:active {
+.nav-button:active {
   background-color: var(--primary-color-dark);
 }
 
-.calendar-icon:hover{
+.nav-icon:hover{
   fill: white;
 }
 
