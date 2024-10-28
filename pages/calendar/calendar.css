@@ -5,11 +5,11 @@
 }
 
 .complete-day {
-  color: green;
+  color: rgb(80, 172, 80);
 }
 
 .incomplete-day {
-  color: red;
+  color: rgb(212, 11, 11);
 }
 
 .null-day {

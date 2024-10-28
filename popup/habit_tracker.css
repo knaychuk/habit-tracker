@@ -23,7 +23,6 @@ root:after {
 
   --primary-color: #fb99aa;
   --primary-color-dark: #ff778e;
-  --remove-color: #ff5656;
 }
 
 body {
@@ -113,7 +112,7 @@ button {
 
 .remove-button {
   color: white;
-  background-color: var(--remove-color);
+  background-color: var(--primary-color);
   font-size: 1rem;
   padding: 2px 6px;
   border: none;

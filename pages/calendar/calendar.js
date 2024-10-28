@@ -22,22 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if(value == true) {
         var div = document.createElement('div');
         div.innerHTML = key;
-        div.classList.add('complete-day');
+        div.classList.add('complete-day');    
       } else if(value == false) {
         var div = document.createElement('div');
         div.innerHTML = key;
-        div.classList.add('incomplete-day')
+        div.classList.add('incomplete-day');
       } else {
-        for(i=0; i<25; i++) {
-          var div = document.createElement('div');
-        
-          div.innerHTML = key;
-          completedList.appendChild(div);
-        }
-
-        
+        var div = document.createElement('div');    
+        div.innerHTML = key;
+        div.classList.add('null-day');
       }
       
+      completedList.appendChild(div);
     });
   }
 
