@@ -59,7 +59,7 @@ button {
 }
 
 
-.popup-container {
+.popup-container-tracker {
   padding: 10px 20px;
   min-height: 500px;
   min-width: 450px;
@@ -84,6 +84,11 @@ button {
   padding: 3px 10px;
   border-radius: 5px;
   /* border: none; */
+}
+
+#habit-list {
+  max-height: 250px;
+  overflow-y: auto;
 }
 
 .habit-item {
